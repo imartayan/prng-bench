@@ -9,14 +9,14 @@ Benchmarking different methods to generate 1GB of random bytes in Rust.
 
 ## On an Apple M1
 
-| PRNG | method | ns / byte |
-| :- | :- | -: |
-| rand | collect `u8` | 6.60 |
-| rand | `fill_bytes` | 1.10 |
-| SmallRng | `fill_bytes` | 0.14 |
-| Xoshiro256** | `fill_bytes` | 0.16 |
-| Xoshiro256++ | `fill_bytes` | 0.14 |
-| Xoshiro512** | `fill_bytes` | 0.17 |
-| Xoshiro512++ | `fill_bytes` | 0.15 |
-| nanorand | `fill_bytes` | 0.27 |
-| fastrand | `fill` | 0.04 |
+| PRNG          | method        | ns / byte     |
+| :-            | :-            | -:            |
+| rand          | collect `u8`  | 6.63          |
+| rand          | `fill_bytes`  | 1.11          |
+| SmallRng      | `fill_bytes`  | 0.17          |
+| Xoshiro256**  | `fill_bytes`  | 0.16          |
+| Xoshiro256++  | `fill_bytes`  | 0.14          |
+| Xoshiro512**  | `fill_bytes`  | 0.17          |
+| Xoshiro512++  | `fill_bytes`  | 0.15          |
+| nanorand      | `fill_bytes`  | 0.27          |
+| fastrand      | `fill`        | 0.04          |

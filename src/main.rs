@@ -10,12 +10,15 @@ fn main() {
     #[allow(unused_assignments)]
     let mut buf = vec![0u8; LEN];
 
+    eprintln!("| PRNG\t\t| method\t| ns / byte\t|");
+    eprintln!("| :-\t\t| :-\t\t| -:\t\t|");
+
     let start = Instant::now();
     buf = repeat_with(rand::random::<u8>).take(LEN).collect();
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "rand collect u8: {:.02} ns / byte",
+        "| rand\t\t| collect `u8`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -25,7 +28,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "rand fill_bytes: {:.02} ns / byte",
+        "| rand\t\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -35,7 +38,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "SmallRng fill_bytes: {:.02} ns / byte",
+        "| SmallRng\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -45,7 +48,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "Xoshiro256** fill_bytes: {:.02} ns / byte",
+        "| Xoshiro256**\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -55,7 +58,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "Xoshiro256++ fill_bytes: {:.02} ns / byte",
+        "| Xoshiro256++\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -65,7 +68,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "Xoshiro512** fill_bytes: {:.02} ns / byte",
+        "| Xoshiro512**\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -75,7 +78,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "Xoshiro512++ fill_bytes: {:.02} ns / byte",
+        "| Xoshiro512++\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -85,7 +88,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "nanorand::WyRand fill_bytes: {:.02} ns / byte",
+        "| nanorand\t| `fill_bytes`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 
@@ -95,7 +98,7 @@ fn main() {
     black_box(&buf);
     let elapsed = start.elapsed().as_nanos();
     eprintln!(
-        "fastrand fill: {:.02} ns / byte",
+        "| fastrand\t| `fill`\t| {:.02}\t\t|",
         elapsed as f64 / LEN as f64
     );
 }
