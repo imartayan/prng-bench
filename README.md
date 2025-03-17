@@ -7,6 +7,20 @@ Benchmarking different methods to generate 1GB of random bytes in Rust.
 - [`nanorand`](https://docs.rs/nanorand/latest/nanorand/)
 - [`fastrand`](https://docs.rs/fastrand/latest/fastrand/)
 
+## On an AMD Ryzen 9 6900HX
+
+| PRNG          | method        | ns / byte     |
+| :-            | :-            | -:            |
+| rand          | collect `u8`  | 2.36          |
+| rand          | `fill_bytes`  | 0.26          |
+| SmallRng      | `fill_bytes`  | 0.09          |
+| Xoshiro256**  | `fill_bytes`  | 0.09          |
+| Xoshiro256++  | `fill_bytes`  | 0.09          |
+| Xoshiro512**  | `fill_bytes`  | 0.10          |
+| Xoshiro512++  | `fill_bytes`  | 0.11          |
+| nanorand      | `fill_bytes`  | 0.30          |
+| fastrand      | `fill`        | 0.09          |
+
 ## On an Apple M1
 
 | PRNG          | method        | ns / byte     |
